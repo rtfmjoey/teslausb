@@ -228,7 +228,7 @@ function wait_for_archive_to_be_unreachable () {
 
 function check_if_usb_gadget_is_mounted () {
     local found="false"
-    for lun in /sys/devices/platform/soc/??980000.usb/gadget/lun0
+    for lun in /sys/devices/platform/soc/1c19000.usb/musb-hdrc.3.auto/gadget/lun0
     do
       if [ -d "$lun" ]
       then
