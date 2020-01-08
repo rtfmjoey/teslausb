@@ -14,7 +14,7 @@ function check_supported_hardware () {
   then
     return
   fi
-  if grep -q 'Raspberry Pi 4' /sys/firmware/devicetree/base/model
+  if grep -q 'Xunlong Orange Pi Plus 2E' /sys/firmware/devicetree/base/model
   then
     return
   fi
@@ -30,7 +30,7 @@ function check_available_space () {
       setup_progress "usb_drive is not set. SD card will be used."
       check_available_space_sd
     else
-      if grep -q 'Pi 4' /sys/firmware/devicetree/base/model
+      if grep -q 'Xunlong Orange Pi Plus 2E' /sys/firmware/devicetree/base/model
       then
         setup_progress "usb_drive is set to $usb_drive. This will be used for /mutable and backingfiles."
         check_available_space_usb
