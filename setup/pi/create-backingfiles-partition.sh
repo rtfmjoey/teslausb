@@ -32,8 +32,8 @@ then
     setup_progress "$usb_drive fully erased. Creating partitions..."
     parted -a optimal -m /dev/sda mkpart primary ext4 '0%' 2GB
     parted -a optimal -m /dev/sda mkpart primary ext4 2GB '100%'
-    setup_progress "Backing files and mutable partitions created."
-
+    setup_progress "Backing files and mutable partitions created. Sleeping 10 seconds for sync to catch up"
+    sleep 5
     setup_progress "Formatting new partitions..."
     # Force creation of filesystems even if previous filesystem appears to exist
     mkfs.ext4 -F -L mutable /dev/sda1
