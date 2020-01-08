@@ -401,8 +401,7 @@ function doubleblink () {
   echo "default-on" > /sys/class/leds/orangepi\:green\:pwr/trigger
 }
 
-function set
-_time () {
+function set_time () {
   log "Waiting for time to be set by ntpd..."
   # shellcheck disable=SC2034
   for i in {1..10}
