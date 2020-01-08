@@ -44,7 +44,7 @@ fi
 
 REPO=${REPO:-rtfmjoey}
 BRANCH=${BRANCH:-main-dev}
-USE_LED_FOR_SETUP_PROGRESS=true
+USE_LED_FOR_SETUP_PROGRESS=false
 CONFIGURE_ARCHIVING=${CONFIGURE_ARCHIVING:-true}
 UPGRADE_PACKAGES=${UPGRADE_PACKAGES:-false}
 TESLAUSB_HOSTNAME=${TESLAUSB_HOSTNAME:-teslausb}
@@ -80,13 +80,13 @@ REBOOT=false
 
 # wpa_supplicant should have a country code. Use US as the default
 # to avoid using the disallowed channels in the US.
-WPA=/etc/wpa_supplicant/wpa_supplicant.conf 
-if ! grep -q "country=" $WPA
-then
-  setup_progress "adding country code to wpa_supplicant.conf"
-  echo "country=US" >> $WPA
-  REBOOT=true
-fi
+#WPA=/etc/wpa_supplicant/wpa_supplicant.conf 
+#if ! grep -q "country=" $WPA
+#then
+#  setup_progress "adding country code to wpa_supplicant.conf"
+#  echo "country=US" >> $WPA
+#  REBOOT=true
+#fi
 
 INCREASE_ROOT_SIZE=$(($(dehumanize "$INCREASE_ROOT_SIZE") / 512))
 
@@ -231,6 +231,7 @@ function get_common_scripts () {
 function fix_cmdline_txt_modules_load ()
 {
   setup_progress "Fixing the modules-load parameter in /boot/cmdline.txt..."
+  touch /boot/cmdline.txt
   cp /boot/cmdline.txt ~
   sed 's/ modules-load=dwc2,g_ether/ modules-load=dwc2/' ~/cmdline.txt > /boot/cmdline.txt
   rm ~/cmdline.txt
