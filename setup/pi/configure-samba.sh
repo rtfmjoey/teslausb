@@ -98,12 +98,12 @@ cat <<- EOF > /etc/samba/smb.conf
 	   delete veto files = yes
 	   root preexec = /root/bin/make_snapshot.sh
 
-	[TeslaMusic]
-   	   read only = no
-   	   locking = no
-   	   path =  /mnt/music
-   	   guest ok = yes
-   	   create mask = 0775
-   	   veto files = /._*/.DS_Store/
-   	   delete veto files = 
+	[TeslaMusicc]
+	   read only = no
+	   locking = no
+	   path =  /mnt/music
+	   guest ok = yes
+	   create mask = 0775
+	   veto files = /._*/.DS_Store/
+	   delete veto files = yes
 	EOF
